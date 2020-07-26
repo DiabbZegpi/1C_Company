@@ -29,8 +29,10 @@ sales_cleaned <- sales_train %>%
 
 items_per_month <- sales_cleaned %>% 
   group_by(date_block_num, ID) %>% 
-  summarize(item_cnt_month = sum(item_cnt_day)) 
+  summarize(item_cnt_month = sum(item_cnt_day)) %>% 
+  ungroup()
 
 # Saving useful datasets  
 write_csv(sales_cleaned, "Data/sales_cleaned.csv")
 write_csv(items_per_month, "Data/items_per_month.csv")
+
